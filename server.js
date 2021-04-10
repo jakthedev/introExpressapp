@@ -2,23 +2,26 @@
 // give it a file name we dont have to tell node to look into node modules for express 
 // it will do that automatically
 const express = require('express'); 
+const morgan = require('morgan');
 
 const hostname = 'localhost'; 
 const port = 3000; 
 
 // define a express function whichs returns an express applicatiion  
-const app = express(); 
+const app = express();  
+// This will configure morgan to logg the develpment verison  
+//this will print additional information to the screen
+app.use(morgan('dev'));
 
-// now we are going to setup the server so it returns the same repsonds for any request 
+// now we are going to setup express to server file files from the public folder 
+app.use(express.static(__dirname + '/public'));
 
 // The middleware in express has access to three functions  
 // req, res, next()
 app.use((req, res) => {
-    console.log(req.headers); 
     res.statusCode = 200; 
     res.setHeader('Content-Type', 'text/html'); 
-    res.end('<html><body><h1>This is an Express Server</h1></body></html>')
-
+    res.end('<html><body><h1>This is an Express Server</h1></body></html>');
 });
 
 // to start the server we need to write app.listen which will create an instance  
