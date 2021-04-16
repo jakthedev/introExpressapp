@@ -27,23 +27,23 @@ partnerRouter.route('/')
 });
 
 // creating HTTP methods for different endpoints. 
-app.get('/partners/:partnerId', (req, res) => {
+partnerRouter.get('/partners/:partnerId', (req, res) => {
     res.end(`Will send details of the partner: ${req.params.partnerId} to you`);
 }); 
 
-app.post('/partners/:partnerId', (req, res) => {
+partnerRouter.post('/partners/:partnerId', (req, res) => {
     // stage a post request message will use later. 
     res.statusCode = 403; 
     res.end(`POST operation not supported on /partners/${req.params.partnerId}`)
 }) 
 
-app.put('/partners/:partnerId', (req, res) => {
+partnerRouter.put('/partners/:partnerId', (req, res) => {
     res.write(`Updating the partner: ${req.params.partnerId}\n`); 
     res.end(`Will update the partner: ${req.body.name}
        with description: ${req.body.description}`); 
 }); 
 
-app.delete('/partners/:partnerId', (req, res) => {
+partnerRouter.delete('/partners/:partnerId', (req, res) => {
     res.end(`Delecting partner: ${req.params.partnerId}`);
 });
 

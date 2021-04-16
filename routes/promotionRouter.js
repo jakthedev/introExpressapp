@@ -27,23 +27,23 @@ promotionRouter.route('/')
 });
 
 // creating HTTP methods for different endpoints. 
-app.get('/promotions/:promotionsId', (req, res) => {
+promotionRouter.get('/promotions/:promotionsId', (req, res) => {
     res.end(`Will send details of the campsite: ${req.params.campsiteId} to you`);
 }); 
 
-app.post('/promotions/:promotionsId', (req, res) => {
+promotionRouter.post('/promotions/:promotionsId', (req, res) => {
     // stage a post request message will use later. 
     res.statusCode = 403; 
     res.end(`POST operation not supported on /promotions/${req.params.promotionId}`)
 }) 
 
-app.put('/promotions/:promotionId', (req, res) => {
+promotionRouter.put('/promotions/:promotionId', (req, res) => {
     res.write(`Updating the promotion: ${req.params.promotionId}\n`); 
     res.end(`Will update the promotion: ${req.body.name}
        with description: ${req.body.description}`); 
 }); 
 
-app.delete('/promotions/:promotionId', (req, res) => {
+promotionRouter.delete('/promotions/:promotionId', (req, res) => {
     res.end(`Delecting promotions: ${req.params.campsiteId}`);
 });
 
