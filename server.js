@@ -4,6 +4,8 @@
 const express = require('express'); 
 const morgan = require('morgan');
 const campsiteRouter = require('./routes/campsiteRouter');
+const partnerRouter = require('./routes/partnerRouter');
+const promotionRouter = require('./routes/promotionRouter');
 
 const hostname = 'localhost'; 
 const port = 3000; 
@@ -17,10 +19,7 @@ app.use(express.json());
 
 app.use('/campsites', campsiteRouter);  
 app.use('/campsites', promotionRouter); 
-app.use()
-
-
-
+app.use('/campsites', partnerRouter);
 
 // now we are going to setup express to server file files from the public folder 
 app.use(express.static(__dirname + '/public'));
